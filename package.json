@@ -12,5 +12,8 @@
     "express": "^4.17.1",
     "get-css": "^4.0.3",
     "penthouse": "^2.3.2"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
