@@ -4,6 +4,7 @@ const port = process.env.PORT || 5000;
 const penthouse = require("penthouse");
 const path = require("path");
 const getCss = require("get-css");
+const puppeteer = require("puppeteer");
 
 app.use(
   express.urlencoded({
@@ -22,9 +23,21 @@ app.post("/generate", (req, res) => {
   };
   getCss(url, options)
     .then(function (response) {
+      const browserPromise = puppeteer.launch({
+        ignoreHTTPSErrors: true,
+        args: ["--disable-setuid-sandbox", "--no-sandbox"],
+        defaultViewport: {
+          width: 1300,
+          height: 900,
+        },
+      });
+
       penthouse({
         url: url,
         cssString: response.css,
+        puppeteer: {
+          getBrowser: () => browserPromise,
+        },
       }).then((criticalCss) => {
         res.send(criticalCss);
       });
