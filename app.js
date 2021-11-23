@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 5000;
 const penthouse = require("penthouse");
 const path = require("path");
 const getCss = require("get-css");
@@ -35,5 +35,5 @@ app.post("/generate", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`App listening - PORT ` + port);
 });
