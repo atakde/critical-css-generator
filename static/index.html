@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Critical CSS Generator</title>
+</head>
+
+<style>
+    .main-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 200px;
+    }
+
+    form {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div class="main-container">
+        <form action="/generate" method="post">
+            <input type="text" name="url" placeholder="URL" required><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+
+</html>
